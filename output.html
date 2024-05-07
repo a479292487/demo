@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择鞋子款式和尺码测试跳转</title>
+</head>
+
+<body>
+    <h2>选择鞋子款式：</h2>
+    <select id="style">
+        <option value="style1">款式1</option>
+        <option value="style2">款式2</option>
+        <option value="style3">款式3</option>
+    </select>
+
+    <h2>选择鞋子尺码：</h2>
+    <select id="size">
+        <option value="size1">尺码1</option>
+        <option value="size2">尺码2</option>
+        <option value="size3">尺码3</option>
+    </select>
+
+    <button onclick="placeOrder()">立即下单</button>
+
+    <h2>输入链接：</h2>
+    <input type="text" id="customLinkInput">
+    <button onclick="setCustomLink()">确定</button>
+
+    <script>
+        function placeOrder() {
+            // 获取输入的链接
+            var customLink = document.getElementById("customLinkInput").value;
+
+            if (customLink === "") {
+                alert("请输入要跳转的链接！");
+                return;
+            }
+
+            // 检查链接是否包含协议，如果不包含，则添加默认的协议
+            if (!customLink.startsWith("http://") && !customLink.startsWith("https://")) {
+                customLink = "http://" + customLink;
+            }
+
+            // 跳转到输入的链接
+            window.location.href = customLink;
+        }
+
+        function setCustomLink() {
+            // 获取选择的款式和尺码
+            var style = document.getElementById("style").value;
+            var size = document.getElementById("size").value;
+
+
+            // 将输入框的值设置为自定义链接
+            document.getElementById("customLinkInput").value = customLink;
+        }
+    </script>
+</body>
+
+</html>
